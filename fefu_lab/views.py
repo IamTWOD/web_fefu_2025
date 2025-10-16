@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.views import View
 
-# Function-Based Views
+# это домашняя страница
 def home_page(request):
     html_content = """
     <!DOCTYPE html>
@@ -20,7 +20,7 @@ def home_page(request):
     </head>
     <body>
         <h1>Добро пожаловать на главную страницу!</h1>
-        <p>Это учебный проект Django для изучения маршрутизации.</p>
+        <p>Это сайт</p>
         <ul>
             <li><a href="/about/">О нас</a></li>
             <li><a href="/student/1/">Профиль студента 1</a></li>
@@ -34,7 +34,7 @@ def home_page(request):
     </html>
     """
     return HttpResponse(html_content)
-
+#это страничка "о нас"
 def about_page(request):
     html_content = """
     <!DOCTYPE html>
@@ -50,8 +50,7 @@ def about_page(request):
     </head>
     <body>
         <h1>О нас</h1>
-        <p>Это учебный проект по Django для изучения маршрутизации и представлений.</p>
-        <p>Проект реализует систему маршрутизации с статическими и динамическими URL.</p>
+        <p>Это проект по вебу.</p>
         <p><a href="/">Вернуться на главную</a></p>
     </body>
     </html>
@@ -59,12 +58,13 @@ def about_page(request):
     return HttpResponse(html_content)
 
 def student_profile(request, student_id):
+    #ЭТО студенты, их надо мучить
     students = {
-        1: {"name": "Иван Иванов", "group": "БПИ-01", "course": 2, "email": "ivan@edu.ru", "avatar": "👨‍🎓"},
-        2: {"name": "Мария Петрова", "group": "БПИ-02", "course": 3, "email": "maria@edu.ru", "avatar": "👩‍🎓"},
-        3: {"name": "Алексей Сидоров", "group": "БПИ-01", "course": 2, "email": "alex@edu.ru", "avatar": "👨‍💻"},
+        1: {"name": "Иван Иванов", "group": "ммзи-01", "course": 2, "email": "ivan@edu.ru", "avatar": "👨‍🎓"},
+        2: {"name": "Мария Петрова", "group": "ммзи-02", "course": 3, "email": "maria@edu.ru", "avatar": "👩‍🎓"},
+        3: {"name": "Алексей Сидоров", "group": "ммзи-01", "course": 2, "email": "alex@edu.ru", "avatar": "👨‍💻"},
     }
-    
+    #это проиль студента
     student = students.get(student_id)
     if student:
         html_content = f"""
@@ -145,7 +145,7 @@ def student_profile(request, student_id):
     else:
         raise Http404("Студент не найден")
 
-# Class-Based Views
+# это все странички курсов
 class CourseDetailView(View):
     def get(self, request, course_slug):
         courses = {
@@ -604,6 +604,9 @@ class CourseDetailView(View):
             raise Http404("Курс не найден")
 
 
+
+
+#ну тут все легко, тут функция состоит просто из одного хтмл тела
 def custom_404(request, exception):
     html_content = """
     <!DOCTYPE html>
