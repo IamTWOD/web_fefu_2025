@@ -1,0 +1,48 @@
+{% extends "fefu_lab/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block heading %}{{ course.name }}{% endblock %}
+
+{% block content %}
+<div class="course-detail">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+        <div class="course-info">
+            <div class="info-item">
+                <strong>📚 Название:</strong> {{ course.name }}
+            </div>
+            <div class="info-item">
+                <strong>⏱️ Продолжительность:</strong> {{ course.duration }} часов
+            </div>
+            <div class="info-item">
+                <strong>🎯 Уровень:</strong> {{ course.level }}
+            </div>
+            <div class="info-item">
+                <strong>👨‍🏫 Преподаватель:</strong> {{ course.instructor }}
+            </div>
+            <div class="info-item">
+                <strong>💰 Стоимость:</strong> {{ course.price }}
+            </div>
+            <div class="info-item">
+                <strong>⭐ Рейтинг:</strong> {{ course.rating }}/5.0
+            </div>
+            <div class="info-item">
+                <strong>👥 Студентов:</strong> {{ course.students }}
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <div style="font-size: 6rem; margin-bottom: 20px;">{{ course.icon }}</div>
+            <div class="success-card">
+                <h3>Описание курса</h3>
+                <p style="line-height: 1.6; color: #4a5568;">{{ course.description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <button class="btn" style="display: inline-block; width: auto;">
+            🚀 Записаться на курс
+        </button>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fefu Lab - {% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fefu_lab/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navigation">
+            <a href="{% url 'home' %}">🏠 Главная</a> | 
+            <a href="{% url 'about' %}">ℹ️ О нас</a> | 
+            <a href="{% url 'feedback' %}">📧 Обратная связь</a> | 
+            <a href="{% url 'register' %}">👤 Регистрация</a> |
+            <a href="{% url 'login' %}">🔐 Вход</a> |  <!-- ← ДОБАВЬТЕ ЭТУ СТРОЧКУ -->
+            <a href="{% url 'student_detail' student_id=1 %}">🎓 Пример студента</a> |
+            <a href="{% url 'course_detail' course_slug='python-basics' %}">📚 Курс Python</a>
+         </nav>
+        
+        <main class="main-content">
+            <h1>{% block heading %}{% endblock %}</h1>
+            {% block content %}{% endblock %}
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 FEFU Lab. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>

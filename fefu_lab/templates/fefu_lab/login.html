@@ -1,0 +1,58 @@
+{% extends "fefu_lab/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block heading %}{{ heading }}{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="success-card" style="text-align: center; margin-bottom: 30px;">
+        <h3>🔐 Демо доступ</h3>
+        <p style="margin: 10px 0;"><strong>Логин:</strong> demo</p>
+        <p style="margin: 10px 0;"><strong>Пароль:</strong> Demo123!</p>
+        <p style="color: var(--text-light); font-size: 0.9rem;">
+            Используйте эти данные для тестирования входа в систему
+        </p>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error">
+                        {% for error in field.errors %}
+                            <div>❌ {{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        {% if form.non_field_errors %}
+            <div class="notification error">
+                {% for error in form.non_field_errors %}
+                    <div>⚠️ {{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <button type="submit" class="btn">🚀 Войти в систему</button>
+    </form>
+    
+    <div style="margin-top: 30px; text-align: center; padding: 20px; background: var(--bg); border-radius: 10px;">
+        <p style="margin-bottom: 15px;">Еще нет аккаунта?</p>
+        <a href="{% url 'register' %}" class="btn btn-success" style="display: inline-block; width: auto;">
+            📝 Зарегистрироваться
+        </a>
+    </div>
+
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="{% url 'home' %}" style="color: var(--primary); text-decoration: none;">
+            ← Вернуться на главную
+        </a>
+    </div>
+</div>
+{% endblock %}

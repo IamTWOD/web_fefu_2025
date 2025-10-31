@@ -1,0 +1,38 @@
+{% extends "fefu_lab/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block heading %}{{ heading }}{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <form method="post">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error">
+                        {% for error in field.errors %}
+                            <div>❌ {{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn">👤 Зарегистрироваться</button>
+    </form>
+    
+    <div style="margin-top: 30px; text-align: center; padding: 20px; background: #f7fafc; border-radius: 8px;">
+        <h3>📋 Требования к регистрации:</h3>
+        <ul style="text-align: left; display: inline-block;">
+            <li>Логин: минимум 3 символа</li>
+            <li>Пароль: минимум 8 символов</li>
+            <li>Пароль должен содержать заглавные и строчные буквы, цифры</li>
+            <li>Email должен быть валидным</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

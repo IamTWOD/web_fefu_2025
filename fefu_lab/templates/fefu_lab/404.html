@@ -1,0 +1,29 @@
+{% extends "fefu_lab/base.html" %}
+
+{% block title %}404 - Страница не найдена{% endblock %}
+{% block heading %}404 - Страница не найдена{% endblock %}
+
+{% block content %}
+<div class="success-card" style="text-align: center;">
+    <div style="font-size: 6rem; margin-bottom: 20px;">🔍</div>
+    <h2 style="color: #e53e3e;">Ой! Страница не найдена</h2>
+    <p style="font-size: 1.1rem; color: #4a5568; margin: 20px 0;">
+        Запрашиваемая страница не существует или была перемещена.
+    </p>
+    
+    <div style="margin-top: 30px;">
+        <a href="{% url 'home' %}" class="btn" style="display: inline-block; width: auto;">
+            🏠 Вернуться на главную
+        </a>
+    </div>
+    
+    <div style="margin-top: 40px; padding: 20px; background: #fed7d7; border-radius: 8px;">
+        <h3>🔧 Возможные причины:</h3>
+        <ul style="text-align: left; display: inline-block;">
+            <li>Неправильно введен URL адрес</li>
+            <li>Страница была удалена или перемещена</li>
+            <li>Ошибка в навигации по сайту</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

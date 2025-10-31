@@ -1,0 +1,35 @@
+{% extends "fefu_lab/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block heading %}{{ heading }}{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <form method="post">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error">
+                        {% for error in field.errors %}
+                            <div>❌ {{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if field.help_text %}
+                    <small style="color: #718096; font-size: 0.875rem;">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn">📤 Отправить сообщение</button>
+    </form>
+    
+    <div style="margin-top: 30px; text-align: center;">
+        <p>Есть вопросы? Свяжитесь с нами через форму обратной связи!</p>
+    </div>
+</div>
+{% endblock %}

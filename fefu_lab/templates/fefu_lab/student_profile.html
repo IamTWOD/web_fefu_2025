@@ -1,0 +1,45 @@
+{% extends "fefu_lab/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block heading %}Профиль студента{% endblock %}
+
+{% block content %}
+<div class="student-profile">
+    <div style="display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: start; margin-bottom: 30px;">
+        <div style="text-align: center;">
+            <div style="font-size: 5rem;">{{ avatar }}</div>
+            <div style="font-size: 1.2rem; font-weight: bold; margin-top: 10px;">{{ student_info }}</div>
+        </div>
+        
+        <div class="student-info">
+            <div class="info-item">
+                <strong>🎓 ID студента:</strong> {{ student_id }}
+            </div>
+            <div class="info-item">
+                <strong>👤 Имя:</strong> {{ student_info }}
+            </div>
+            <div class="info-item">
+                <strong>🏛️ Факультет:</strong> {{ faculty }}
+            </div>
+            <div class="info-item">
+                <strong>📊 Статус:</strong> {{ status }}
+            </div>
+            <div class="info-item">
+                <strong>📅 Год обучения:</strong> {{ year }} курс
+            </div>
+            <div class="info-item">
+                <strong>📧 Email:</strong> {{ email }}
+            </div>
+        </div>
+    </div>
+
+    <div class="success-card">
+        <h3>👥 Другие студенты:</h3>
+        <ul class="link-list">
+            <li><a href="{% url 'student_detail' student_id=1 %}">👨‍🎓 Иван Петров - Кибербезопасность</a></li>
+            <li><a href="{% url 'student_detail' student_id=2 %}">👩‍🎓 Мария Сидорова - Информатика</a></li>
+            <li><a href="{% url 'student_detail' student_id=3 %}">👨‍💻 Алексей Козлов - Программная инженерия</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "fefu_lab/base.html" %}
+
+{% block title %}О нас{% endblock %}
+{% block heading %}О нашем проекте{% endblock %}
+
+{% block content %}
+<div class="about-content">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 40px;">
+        <div>
+            <h2 style="color: #2d3748; margin-bottom: 20px;">🎯 Наша миссия</h2>
+            <p style="line-height: 1.8; color: #4a5568;">
+                FEFU Lab - это образовательная платформа, созданная для студентов, 
+                которые хотят освоить веб-разработку на Django. Мы предоставляем 
+                практические знания и реальные проекты для профессионального роста.
+            </p>
+        </div>
+        <div style="text-align: center;">
+            <div style="font-size: 6rem;">🚀</div>
+        </div>
+    </div>
+
+    <div class="student-info">
+        <h3>📊 Что мы предлагаем:</h3>
+        <div class="info-item">
+            <strong>🎓 Обучение:</strong> Практические курсы по Django и веб-разработке
+        </div>
+        <div class="info-item">
+            <strong>👥 Сообщество:</strong> Поддержка опытных разработчиков и менторов
+        </div>
+        <div class="info-item">
+            <strong>💼 Проекты:</strong> Реальные задачи для портфолио
+        </div>
+        <div class="info-item">
+            <strong>🔧 Технологии:</strong> Современный стек технологий и лучшие практики
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; text-align: center;">
+        <p style="font-size: 1.1rem; color: #4a5568;">
+            Присоединяйтесь к нам и начните свой путь в веб-разработке!
+        </p>
+        <a href="{% url 'register' %}" class="btn" style="display: inline-block; width: auto; margin-top: 20px;">
+            Присоединиться сейчас
+        </a>
+    </div>
+</div>
+{% endblock %}
